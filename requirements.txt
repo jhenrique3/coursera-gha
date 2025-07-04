@@ -1,0 +1,7 @@
+# Outdated & vulnerable dependencies (for SAST/DAST testing)
+
+Flask==0.12      # CVE-2018-1000656 - XSS
+requests==2.19.1 # CVE-2018-18074 - Redirect to arbitrary URL
+PyYAML==3.13     # CVE-2017-18342 - Arbitrary code execution
+Django==1.2      # Multiple CVEs - including SQL Injection
+Jinja2==2.10     # CVE-2019-10906 - Sandbox escape
