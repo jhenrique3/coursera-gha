@@ -45,11 +45,11 @@ jobs:
         run: semgrep scan -q --config auto --sarif --sarif-output=semgrep-results.sarif
 
       # upload the results for the CodeQL GitHub app to annotate the code
-#      - name: Save SARIF results as artifact
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: semgrep-scan-results
-#          path: semgrep-results.sarif
+      - name: Save SARIF results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-scan-results
+          path: semgrep-results.sarif
 
       # Upload SARIF file generated in previous step
       - name: Upload SARIF result to the GitHub Security Dashboard
