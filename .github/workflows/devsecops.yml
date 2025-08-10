@@ -44,18 +44,18 @@ jobs:
       # --config r/all --config custom/rules
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-        run: semgrep scan -q --config r/all --sarif --sarif-output=semgrep_all-results.sarif
+        run: semgrep scan -q --config "p/default" --config "p/python" --config "p/django"  --sarif --sarif-output=semgrep-results.sarif
 
       # upload the results for the CodeQL GitHub app to annotate the code
       - name: Save SARIF results as artifact
         uses: actions/upload-artifact@v4
         with:
           name: semgrep-scan-results
-          path: semgrep_all-results.sarif
+          path: semgrep-results.sarif
 
       # Upload SARIF file generated in previous step
       - name: Upload SARIF result to the GitHub Security Dashboard
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: semgrep_all-results.sarif
+          sarif_file: semgrep-results.sarif
         if: always()
